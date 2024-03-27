@@ -1,0 +1,12 @@
+.text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 32px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  color: orangered;
+}

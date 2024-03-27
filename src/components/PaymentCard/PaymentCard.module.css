@@ -1,0 +1,17 @@
+.container {
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.text {
+  margin: 0;
+}
+
+.isPaid {
+  color: green;
+}
+
+.isPending {
+  color: orangered;
+}

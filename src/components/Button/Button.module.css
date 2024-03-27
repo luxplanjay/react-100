@@ -1,0 +1,14 @@
+.btn {
+  padding: 12px;
+  font-size: 20px;
+}
+
+.primary {
+  background-color: blue;
+  color: #fff;
+}
+
+.secondary {
+  background-color: orangered;
+  color: #fff;
+}
