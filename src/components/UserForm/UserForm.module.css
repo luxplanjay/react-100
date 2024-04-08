@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid #2a2a2a;
+  border-radius: 2px;
+  width: 300px;
+  padding: 8px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+}
