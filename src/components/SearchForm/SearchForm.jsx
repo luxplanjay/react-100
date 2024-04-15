@@ -6,7 +6,7 @@ export default function SearchForm({ onSearch }) {
     <Formik
       initialValues={{ query: "" }}
       onSubmit={(values, actions) => {
-        onSearch();
+        onSearch(values.query);
         actions.resetForm();
       }}
     >
