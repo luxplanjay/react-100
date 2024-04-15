@@ -1,15 +1,12 @@
-import UserForm from "../UserForm/UserForm";
+// import ArticleList from "../ArticleList/ArticleList";
+// import SearchForm from "../SearchForm/SearchForm";
+// import { fetchArticles } from "../../article-api";
 import css from "./App.module.css";
 
 export default function App() {
-  const handleAddUser = (newUser) => {
-    console.log("handleAddUser", newUser);
-  };
-
   return (
     <div className={css.container}>
-      <h1>Forms with Formik</h1>
-      <UserForm onAdd={handleAddUser} />
+      <h1>HTTP requests in React</h1>
     </div>
   );
 }
