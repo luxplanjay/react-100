@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Подвійне монтування і запуск інтервала
@@ -7,17 +7,33 @@ import { useEffect, useState } from "react";
  */
 
 const Timer = () => {
+  const [clicks, setClicks] = useState(0);
+
+  const intervalRef = useRef();
+
   useEffect(() => {
-    setInterval(() => {
+    intervalRef.current = setInterval(() => {
       console.log(Date.now());
     }, 1000);
+    console.log("useEffect", intervalRef);
+
+    return () => {
+      console.log("cleanup", intervalRef);
+      clearInterval(intervalRef.current);
+    };
   }, []);
 
-  // const stopInterval = () => {
-  // };
+  const stopInterval = () => {
+    console.log("stopInterval", intervalRef);
+    clearInterval(intervalRef.current);
+  };
 
   return (
-    <div>{/* <button onClick={stopInterval}>Stop interval</button> */}</div>
+    <div>
+      <p>Timer</p>
+      <button onClick={() => setClicks(clicks + 1)}>{clicks}</button>
+      <button onClick={stopInterval}>Stop interval</button>
+    </div>
   );
 };
 

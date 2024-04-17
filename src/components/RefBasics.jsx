@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useRef } from "react";
+
 /**
  * - Створення та ініціалізація
  * - Життєвий цикл рефа
@@ -5,5 +8,14 @@
  */
 
 export default function RefBasics() {
-  return <div>Ref basics</div>;
+  const mountRef = useRef(Date.now());
+
+  const [clicks, setClicks] = useState(0);
+
+  return (
+    <div>
+      <p onClick={() => setClicks(clicks + 1)}>{clicks}</p>
+      <p>mountRef: {mountRef.current}</p>
+    </div>
+  );
 }
