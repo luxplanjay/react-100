@@ -1,0 +1,14 @@
+.link {
+  display: inline-flex;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: orangered;
+}
+
+.active {
+  background-color: teal;
+  color: #fff;
+}
