@@ -1,11 +1,17 @@
+import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout/Layout";
-import HomePage from "../pages/HomePage/HomePage";
-import PaymentsPage from "../pages/PaymentsPage/PaymentsPage";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import PaymentDetailsPage from "../pages/PaymentDetailsPage/PaymentDetailsPage";
-import BankInfo from "./BankInfo";
-import PaymentReceipt from "./PaymentReceipt";
+// import BankInfo from "./BankInfo";
+// import PaymentReceipt from "./PaymentReceipt";
+
+const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
+const PaymentsPage = lazy(() => import("../pages/PaymentsPage/PaymentsPage"));
+const PaymentDetailsPage = lazy(() =>
+  import("../pages/PaymentDetailsPage/PaymentDetailsPage")
+);
+const NotFoundPage = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
+const BankInfo = lazy(() => import("./BankInfo"));
+const PaymentReceipt = lazy(() => import("./PaymentReceipt"));
 
 export default function App() {
   return (

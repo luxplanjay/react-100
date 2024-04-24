@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
-import { useParams, Link, Outlet } from "react-router-dom";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import { getPaymentById } from "../../payments-api";
 import PaymentInfo from "../../components/PaymentInfo";
 
 export default function PaymentDetailsPage() {
   const { paymentId } = useParams();
   const [payment, setPayment] = useState(null);
+
+  const location = useLocation();
+  const backLinkURLRef = useRef(location.state ?? "/payments");
 
   useEffect(() => {
     async function fetchPayment() {
@@ -22,6 +25,11 @@ export default function PaymentDetailsPage() {
       <p>
         <b>PaymentDetailsPage</b>
       </p>
+
+      <div>
+        <Link to={backLinkURLRef.current}>Go back</Link>
+      </div>
+
       {payment && <PaymentInfo payment={payment} />}
 
       <ul>
@@ -33,7 +41,9 @@ export default function PaymentDetailsPage() {
         </li>
       </ul>
 
-      <Outlet />
+      <Suspense fallback={<b>Loading nested route...</b>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }
