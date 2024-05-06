@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.text {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.btn {
+  cursor: pointer;
+}

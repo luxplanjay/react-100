@@ -13,13 +13,3 @@ img {
   max-width: 100%;
   object-fit: contain;
 }
-
-p {
-  margin: 0;
-}
-
-input,
-button,
-select {
-  font: inherit;
-}
