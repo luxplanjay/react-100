@@ -7,7 +7,7 @@ export default function TaskForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(addTask(values));
+    dispatch(addTask(values.text));
     actions.resetForm();
   };
 
