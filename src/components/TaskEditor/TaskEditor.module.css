@@ -1,15 +1,19 @@
-.wrapper {
+.form {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px;
-  border: 1px solid #2a2a2a;
-  border-radius: 4px;
+  width: 100%;
+  gap: 4px;
+  margin-bottom: 12px;
 }
 
-.text {
-  margin-top: 0;
-  margin-bottom: 0;
+.input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  font: inherit;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  resize: none;
 }
 
 .button {
@@ -17,9 +21,8 @@
   font: inherit;
   cursor: pointer;
   outline: none;
-  margin-left: auto;
+  padding: 0 8px;
   border-radius: 4px;
-  padding: 8px 12px;
   background-color: #3f51b5;
   color: #fff;
 }

@@ -1,8 +1,8 @@
 .list {
-  list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 12px;
 }

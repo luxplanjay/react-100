@@ -1,32 +1,23 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout/Layout";
-import TaskList from "./TaskList/TaskList";
-import Loader from "./Loader/Loader";
-import Error from "./Error/Error";
-import TaskForm from "./TaskForm/TaskForm";
-import TextFilter from "./TextFilter/TextFilter";
-import { fetchTasks } from "../redux/tasksOps";
-import { selectLoading, selectError, selectSum } from "../redux/tasksSlice";
+
+const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
+const RegisterPage = lazy(() => import("../pages/RegisterPage/RegisterPage"));
+const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
+const TasksPage = lazy(() => import("../pages/TasksPage/TasksPage"));
 
 export default function App() {
-  const dispatch = useDispatch();
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-  const sum = useSelector(selectSum);
-
-  useEffect(() => {
-    dispatch(fetchTasks());
-  }, [dispatch]);
-
   return (
     <Layout>
-      <h1>Selector memoization: {sum}</h1>
-      <TaskForm />
-      <TextFilter />
-      {loading && <Loader>Loading tasks, please wait</Loader>}
-      {error && <Error>Error message</Error>}
-      <TaskList />
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/tasks" element={<TasksPage />} />
+        </Routes>
+      </Suspense>
     </Layout>
   );
 }
