@@ -1,9 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// react1001@mail.com
-// react100@mail.com
-
 axios.defaults.baseURL = "https://goit-task-manager.herokuapp.com/";
 
 const setAuthHeader = token => {
@@ -14,6 +11,9 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common["Authorization"] = "";
 };
 
+// react1001@mail.com
+// react100@mail.com
+
 /*
  * POST @ /users/signup
  * body: { name, email, password }
@@ -22,9 +22,9 @@ const clearAuthHeader = () => {
  */
 export const register = createAsyncThunk(
   "auth/register",
-  async (newUser, thunkAPI) => {
+  async (userInfo, thunkAPI) => {
     try {
-      const response = await axios.post("/users/signup", newUser);
+      const response = await axios.post("/users/signup", userInfo);
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
@@ -66,3 +66,29 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+/*
+ * GET @ /users/me
+ * headers: Authorization: Bearer token
+ *
+ * Reading the token from the state via getState()
+ * Add it to the HTTP header and perform the request
+ * If there is no token, exit without performing any request
+ */
+
+export const refreshUser = createAsyncThunk(
+  "auth/refresh",
+  async (_, thunkAPI) => {
+    const reduxState = thunkAPI.getState();
+    setAuthHeader(reduxState.auth.token);
+
+    const response = await axios.get("/users/me");
+    return response.data;
+  },
+  {
+    condition(_, thunkAPI) {
+      const reduxState = thunkAPI.getState();
+      return reduxState.auth.token !== null;
+    },
+  }
+);

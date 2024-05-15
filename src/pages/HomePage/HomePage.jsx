@@ -4,7 +4,7 @@ export default function HomePage() {
   return (
     <div>
       <PageTitle>
-        Task manager welcome page{" "}
+        Welcome{" "}
         <span role="img" aria-label="Greeting icon">
           💁‍♀️
         </span>
